@@ -76,7 +76,7 @@ nav.scrolled {
 }
 
 .nav-logo img {
-  height: 48px;
+  height: 72px;
   width: auto;
   display: block;
   transition: transform 0.3s var(--transition);
@@ -970,6 +970,7 @@ nav.scrolled .nav-wa:hover {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
+  flex-wrap: wrap;
 }
 
 .tech-banner-title {
@@ -1031,6 +1032,65 @@ nav.scrolled .nav-wa:hover {
   object-fit: cover;
   border-radius: 12px;
   border: 2px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 991px) {
+  .tech-bottom-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 36px 28px;
+  }
+
+  .tech-banner-imgs {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-bottom-banner {
+    padding: 28px 18px;
+    border-radius: 16px;
+  }
+
+  .tech-banner-title {
+    font-size: 19px;
+  }
+
+  .tech-banner-sub {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .tech-banner-icons {
+    gap: 14px;
+  }
+
+  .tech-banner-icon {
+    flex: 0 0 calc(33.333% - 10px);
+  }
+
+  .tech-banner-icon span {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tech-banner-icon p {
+    font-size: 9px;
+    max-width: none;
+  }
+
+  .tech-banner-imgs img {
+    width: 80px;
+    height: 95px;
+  }
+}
+
+@media (max-width: 380px) {
+  .tech-banner-icon {
+    flex: 0 0 calc(50% - 8px);
+  }
 }
 
 .masonry-grid {
@@ -1286,6 +1346,45 @@ nav.scrolled .nav-wa:hover {
   border-bottom-color: var(--obsidian);
 }
 
+.btn-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: transform 0.35s var(--transition), box-shadow 0.35s var(--transition), background-position 0.6s ease;
+}
+
+.btn-instagram i {
+  font-size: 16px;
+  transition: transform 0.35s var(--transition);
+}
+
+.btn-instagram:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(220, 39, 67, 0.35);
+  background-position: 100% 50%;
+}
+
+.btn-instagram:hover i {
+  transform: rotate(-8deg) scale(1.15);
+}
+
+.btn-instagram:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
 /* ── FOOTER ── */
 footer {
   background: var(--obsidian);
@@ -1429,6 +1528,10 @@ footer {
   transform-origin: center;
 }
 
+.mobile-menu-btn.open span {
+  background: var(--obsidian);
+}
+
 nav.scrolled .mobile-menu-btn span {
   background: var(--obsidian);
 }
@@ -1507,26 +1610,55 @@ nav.scrolled .mobile-menu-btn span {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 72px;
     right: 0;
-    bottom: 0;
-    background: #ffffff;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
+    left: auto;
+    bottom: auto;
+    background: #F5F0E6;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+    width: 240px;
+    max-width: 70vw;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.35s;
     z-index: 1004;
+    box-shadow: -8px 16px 32px rgba(0,0,0,0.25);
+    border-radius: 0 0 0 14px;
+    padding: 12px;
+    gap: 10px;
   }
   .nav-links.mobile-open {
     transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
   }
 
-  .nav-links a {
+ .nav-links a {
     color: var(--obsidian) !important;
-    font-size: 18px;
-    letter-spacing: 3px;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    width: 100%;
+    padding: 14px 18px;
+    border-bottom: none;
+    background: #ffffff;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .nav-links li {
+    list-style: none;
+    width: 100%;
+  }
+
+  .nav-links li:last-child a {
+    border-bottom: none;
   }
 
   .nav-wa {
